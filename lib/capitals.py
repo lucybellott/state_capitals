@@ -1,4 +1,4 @@
-# an array of state dictionaries
+# a list of state dictionaries
 states = [
 {
     "name": "Alabama",
