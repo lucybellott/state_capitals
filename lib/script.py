@@ -8,13 +8,21 @@ def play_game():
     incorrect_answer_score = 0
     for state in states:
         capital_guess = input(f"What is the capital of {state['name']}?: ")
-        if capital_guess.lower() == state["capital"].lower():
+        # allows for more flexibility in the answers
+        formatted_guess = capital_guess.lower().replace(".", "")
+        formatted_answer = state['capital'].lower().replace(".", "")
+        if formatted_guess == formatted_answer:
             correct_answer_score += 1
             print(f"Correct: {correct_answer_score} Incorrect: {incorrect_answer_score}")
         else:
             incorrect_answer_score += 1
-            print(f"Correct: {correct_answer_score} Incorrect: {incorrect_answer_score}")
-    # guess = input(f"What is the capital of {state["name"]}?: ")
-# print(states)
+            print(f"Incorrect. The capital of {state['name']} is actually {state['capital']}.\nCorrect: {correct_answer_score} Incorrect: {incorrect_answer_score}")
+    print(f"Your final score is {correct_answer_score}!")
+    play_again = input("Would you like to play again? (y or n)?: ")
+    if play_again == "y":
+        play_game()
+    else:
+        print("Thanks for playing! Come back soon!")
+
 
 play_game()
